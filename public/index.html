@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jscolor.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <script language="javascript" type="text/javascript">
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            }
+        };
+        var postColor = function(color){
+            xmlhttp.open("POST", "/colorForm", true);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            var body = 'color=' + color;
+            xmlhttp.send(body);
+        }
+    </script>
+</head>
+<body>
+    <h1>
+        LED Farbauswahl
+    </h1>
+    <form action="/colorForm" method="post">
+        <input class="jscolor {width:500, height:400}" value="FF0000" name="color" onchange="postColor(this.jscolor)" />
+    </form>
+    <form action="/colorForm" method="post">
+        <button type="submit" name="color" value="r">Rainbow</button>
+    </form>
+    <img src="cat.bmp" />
+</body>
+</html>
